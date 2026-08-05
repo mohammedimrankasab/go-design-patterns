@@ -1,15 +1,13 @@
-package factory_test
+package factory
 
 import (
 	"testing"
-
-	"github.com/mohammedimrankasab/go-design-patterns/creational/factory"
 )
 
 func TestNotificationFactoryEmail(t *testing.T) {
 
-	notification, err := factory.NewNotification(
-		factory.Email,
+	notification, err := NewNotification(
+		Email,
 		"user@example.com",
 	)
 
@@ -30,8 +28,8 @@ func TestNotificationFactoryEmail(t *testing.T) {
 
 func TestNotificationFactorySMS(t *testing.T) {
 
-	notification, err := factory.NewNotification(
-		factory.SMS,
+	notification, err := NewNotification(
+		SMS,
 		"+911234567890",
 	)
 
@@ -52,8 +50,8 @@ func TestNotificationFactorySMS(t *testing.T) {
 
 func TestNotificationFactoryPush(t *testing.T) {
 
-	notification, err := factory.NewNotification(
-		factory.Push,
+	notification, err := NewNotification(
+		Push,
 		"device123",
 	)
 
@@ -73,7 +71,7 @@ func TestNotificationFactoryPush(t *testing.T) {
 }
 func TestNotificationFactoryInvalidType(t *testing.T) {
 
-	_, err := factory.NewNotification(
+	_, err := NewNotification(
 		"whatsapp",
 		"user",
 	)
@@ -82,5 +80,48 @@ func TestNotificationFactoryInvalidType(t *testing.T) {
 		t.Fatal(
 			"expected error for unsupported notification type",
 		)
+	}
+}
+func TestNotificationSend(t *testing.T) {
+
+	tests := []struct {
+		name         string
+		notification Notification
+	}{
+		{
+			name: "email",
+			notification: &EmailNotification{
+				Recipient: "user@example.com",
+			},
+		},
+		{
+			name: "sms",
+			notification: &SMSNotification{
+				PhoneNumber: "+911234567890",
+			},
+		},
+		{
+			name: "push",
+			notification: &PushNotification{
+				DeviceID: "device-123",
+			},
+		},
+	}
+
+	for _, tt := range tests {
+
+		t.Run(tt.name, func(t *testing.T) {
+
+			err := tt.notification.Send(
+				"hello",
+			)
+
+			if err != nil {
+				t.Fatalf(
+					"unexpected error: %v",
+					err,
+				)
+			}
+		})
 	}
 }
