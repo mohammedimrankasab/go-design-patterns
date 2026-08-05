@@ -1,78 +1,34 @@
-# Go Design Patterns
+# Go Design Patterns: Production-Ready Examples
 
-Production-oriented implementations of software design patterns using idiomatic Go.
+> A curated collection of Go design patterns implemented using real-world backend engineering examples, idiomatic Go practices, comprehensive tests, and CI/CD.
 
-This repository focuses on understanding **why and when to use a pattern**, along with practical implementation details, trade-offs, and testing strategies.
-
----
-
-## Philosophy
-
-Design patterns are not about adding unnecessary complexity. They are tools to solve recurring engineering problems.
-
-This repository follows Go engineering principles:
-
-- Composition over inheritance
-- Interfaces over unnecessary coupling
-- Explicit dependencies
-- Small and focused abstractions
-- Simple solutions over premature complexity
-- Code that is easy to test and maintain
+![Go Version](https://img.shields.io/badge/Go-1.26-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
-# Patterns Covered
+## Why This Repository?
 
-## Creational Patterns
+Most Go design pattern repositories demonstrate concepts using toy examples such as **Animals**, **Shapes**, or **Cars**.
 
-Patterns focused on object creation and dependency management.
+While these examples explain the pattern, they rarely show how it is applied in production software.
 
-| Pattern | Description |
-|---|---|
-| Singleton | Managing a single shared instance |
-| Factory | Creating objects without exposing implementation details |
-| Builder | Constructing complex objects step by step |
-| Functional Options | Idiomatic Go configuration pattern |
+This repository focuses on **real-world backend engineering scenarios**, making it useful for:
 
----
+- Backend Engineers
+- Go Developers
+- Interview Preparation
+- System Design Learning
+- Production Software Development
 
-## Structural Patterns
+Every implementation is designed to be:
 
-Patterns focused on composing objects and simplifying relationships.
-
-| Pattern | Description |
-|---|---|
-| Adapter | Making incompatible interfaces work together |
-| Decorator | Adding behavior dynamically |
-| Facade | Providing a simplified interface over complex systems |
-| Proxy | Controlling access to another object |
-
----
-
-## Behavioral Patterns
-
-Patterns focused on communication and responsibility handling.
-
-| Pattern | Description |
-|---|---|
-| Strategy | Selecting algorithms dynamically |
-| Observer | Event notification mechanism |
-| Command | Encapsulating actions as objects |
-| Chain of Responsibility | Middleware-style request processing |
-| State | Changing behavior based on internal state |
-
----
-
-## Concurrency Patterns
-
-Go-specific patterns for building reliable concurrent systems.
-
-| Pattern | Description |
-|---|---|
-| Worker Pool | Controlled parallel task execution |
-| Pipeline | Multi-stage data processing |
-| Fan-In / Fan-Out | Concurrent stream processing |
-| Rate Limiter | Controlling request throughput |
+- Idiomatic Go
+- Dependency Injection friendly
+- Production-inspired
+- Well documented
+- Fully tested
+- CI verified
 
 ---
 
@@ -82,77 +38,214 @@ Go-specific patterns for building reliable concurrent systems.
 go-design-patterns
 │
 ├── creational
+│   ├── builder
+│   ├── factory
+│   ├── functional-options
+│   └── singleton
+│
 ├── structural
+│   ├── adapter
+│   ├── decorator
+│   ├── facade
+│   └── proxy
+│
 ├── behavioral
+│   ├── chain
+│   ├── command
+│   ├── observer
+│   └── strategy
+│
 ├── concurrency
-├── examples
-├── docs
-└── .github
-```
-
-Each pattern contains:
-
-```text
-pattern-name/
-
-├── README.md
-├── implementation.go
-└── implementation_test.go
+│   ├── worker-pool
+│   ├── pipeline
+│   ├── fan-in-fan-out
+│   └── rate-limiter
+│
+└── docs
 ```
 
 ---
 
-# Running Tests
+# Implemented Patterns
 
-Run all tests:
+## Creational
+
+| Pattern | Status | Production Example |
+|----------|--------|--------------------|
+| Functional Options | ✅ | Configurable server initialization |
+| Builder | ✅ | HTTP client construction |
+| Factory | ✅ | Notification providers |
+| Singleton | ✅ | Configuration manager |
+
+---
+
+## Structural
+
+| Pattern | Status | Production Example |
+|----------|--------|--------------------|
+| Adapter | ✅ | Legacy payment gateway |
+| Decorator | ✅ | Logging & Metrics wrappers |
+| Facade | ✅ | Order orchestration |
+| Proxy | 🚧 | Authorization proxy |
+
+---
+
+## Behavioral
+
+Coming soon.
+
+- Strategy
+- Observer
+- Command
+- Chain of Responsibility
+
+---
+
+## Concurrency
+
+Coming soon.
+
+- Worker Pool
+- Pipeline
+- Fan-In / Fan-Out
+- Rate Limiter
+
+---
+
+# Running Examples
+
+Clone the repository.
+
+```bash
+git clone https://github.com/mohammedimrankasab/go-design-patterns.git
+
+cd go-design-patterns
+```
+
+Run all tests.
 
 ```bash
 go test ./...
 ```
 
-Run tests with race detection:
+Run the race detector.
 
 ```bash
 go test -race ./...
 ```
 
-Run static analysis:
+Run code quality checks.
 
 ```bash
-go vet ./...
+make check
 ```
 
 ---
 
-# Documentation
+# Learning Path
 
-Additional engineering notes are available under:
+If you're new to design patterns, follow this order.
 
-```text
-docs/
-```
+### Beginner
 
-Topics include:
+- Functional Options
+- Factory
+- Builder
 
-- Design principles
-- Go-specific patterns
-- Pattern trade-offs
-- Production usage considerations
+### Intermediate
+
+- Singleton
+- Adapter
+- Decorator
+- Facade
+- Proxy
+
+### Advanced
+
+- Strategy
+- Observer
+- Command
+- Chain of Responsibility
+
+### Go Concurrency
+
+- Worker Pool
+- Pipeline
+- Fan-In / Fan-Out
+- Rate Limiter
 
 ---
 
-# Goals
+# Why These Examples?
 
-This repository demonstrates:
+Every implementation uses a realistic backend engineering scenario.
 
-- Practical Go design skills
-- Production-oriented thinking
-- Clean architecture principles
-- Concurrency design patterns
-- Testing practices
+Examples include:
+
+- Payment gateways
+- Notification services
+- Configuration managers
+- HTTP middleware
+- Logging wrappers
+- Metrics instrumentation
+- Order orchestration
+
+These are patterns you are likely to encounter in production Go applications.
+
+---
+
+# Repository Goals
+
+This project aims to provide:
+
+- Clear explanations
+- Idiomatic Go implementations
+- Production-inspired examples
+- Comprehensive unit tests
+- High code quality
+- Interview-ready reference implementations
+
+---
+
+# Contributing
+
+Contributions are welcome.
+
+Please read:
+
+- CONTRIBUTING.md
+- CODE_OF_CONDUCT.md
+
+before opening an issue or pull request.
+
+---
+
+# Roadmap
+
+## Phase 1
+
+- [x] Creational Patterns
+- [x] Structural Patterns
+
+## Phase 2
+
+- [ ] Behavioral Patterns
+- [ ] Concurrency Patterns
+
+## Phase 3
+
+Production Engineering Patterns
+
+- [ ] Retry
+- [ ] Circuit Breaker
+- [ ] Saga
+- [ ] Outbox
+- [ ] Idempotency
+- [ ] Cache Aside
+- [ ] CQRS
 
 ---
 
 # License
 
-MIT License
+This project is licensed under the MIT License.
